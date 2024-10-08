@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('title');
             $table->unsignedBigInteger('course_id'); // Foreign key to courses table
             $table->string('level');
+//            $table->json('answers');
+//            $table->string('correct_answer');
             $table->timestamps();
             $table->softDeletes();
             // Foreign key constraint

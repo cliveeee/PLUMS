@@ -13,11 +13,8 @@ class QuizController extends Controller
      */
     public function index()
     {
-        $quizzes = Quiz::all();
-
-        $trashedCount = Quiz::onlyTrashed()->count();
-
-        return view('quizzes.index', compact('quizzes', 'trashedCount'));
+        $quizzes = Quiz::with(['questions.answers'])->get(); // Eager load related data
+        return response()->json(['quizzes' => $quizzes]);
     }
 
     /**
